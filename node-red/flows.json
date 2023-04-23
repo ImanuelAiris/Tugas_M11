@@ -1,0 +1,1237 @@
+[
+    {
+        "id": "c4c2cb64482cdd7f",
+        "type": "tab",
+        "label": "Smart Steel Plant",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "179d262fc9692c59",
+        "type": "inject",
+        "z": "c4c2cb64482cdd7f",
+        "name": "Feedwater System",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 140,
+        "wires": [
+            [
+                "8d779544cc5ee7b1",
+                "8398048f61e4ac43",
+                "241a48c58e482b1e",
+                "b3e5fa65bfbeabb1"
+            ]
+        ]
+    },
+    {
+        "id": "a6ae95c996995d5a",
+        "type": "mqtt out",
+        "z": "c4c2cb64482cdd7f",
+        "name": "",
+        "topic": "ssp/konduktivitas",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "727660ac399984c1",
+        "x": 670,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "8d779544cc5ee7b1",
+        "type": "random",
+        "z": "c4c2cb64482cdd7f",
+        "name": "Sensor Konduktivitas",
+        "low": "0",
+        "high": "2000",
+        "inte": "true",
+        "property": "payload",
+        "x": 440,
+        "y": 80,
+        "wires": [
+            [
+                "a6ae95c996995d5a"
+            ]
+        ]
+    },
+    {
+        "id": "241a48c58e482b1e",
+        "type": "random",
+        "z": "c4c2cb64482cdd7f",
+        "name": "Sensor Tekanan",
+        "low": "0",
+        "high": "1000",
+        "inte": "true",
+        "property": "payload",
+        "x": 420,
+        "y": 140,
+        "wires": [
+            [
+                "3d1332af692b0581"
+            ]
+        ]
+    },
+    {
+        "id": "8398048f61e4ac43",
+        "type": "random",
+        "z": "c4c2cb64482cdd7f",
+        "name": "Sensor Temperatur",
+        "low": "-200",
+        "high": "850",
+        "inte": "true",
+        "property": "payload",
+        "x": 430,
+        "y": 200,
+        "wires": [
+            [
+                "1ed0e147fa84c96f"
+            ]
+        ]
+    },
+    {
+        "id": "3d1332af692b0581",
+        "type": "mqtt out",
+        "z": "c4c2cb64482cdd7f",
+        "name": "",
+        "topic": "ssp/tekanan",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "727660ac399984c1",
+        "x": 650,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "1ed0e147fa84c96f",
+        "type": "mqtt out",
+        "z": "c4c2cb64482cdd7f",
+        "name": "",
+        "topic": "ssp/temperatur",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "727660ac399984c1",
+        "x": 660,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "c32097b1308f1675",
+        "type": "mqtt in",
+        "z": "c4c2cb64482cdd7f",
+        "name": "",
+        "topic": "ssp/konduktivitas",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "02cfe6d0d7982aee",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 280,
+        "wires": [
+            [
+                "febd274107d0fb09",
+                "562c70e13a11518b"
+            ]
+        ]
+    },
+    {
+        "id": "febd274107d0fb09",
+        "type": "ui_gauge",
+        "z": "c4c2cb64482cdd7f",
+        "name": "Sensor Konduktivitas",
+        "group": "941891c8d43954f7",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Sensor Konduktivitas",
+        "label": "µS/cm ",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "2000",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 400,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "562c70e13a11518b",
+        "type": "debug",
+        "z": "c4c2cb64482cdd7f",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "16f25fc6fb75bbf9",
+        "type": "mqtt in",
+        "z": "c4c2cb64482cdd7f",
+        "name": "",
+        "topic": "ssp/tekanan",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "02cfe6d0d7982aee",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 380,
+        "wires": [
+            [
+                "44a61c5fe3a13c3f",
+                "f75a393a5de695a0"
+            ]
+        ]
+    },
+    {
+        "id": "44a61c5fe3a13c3f",
+        "type": "ui_gauge",
+        "z": "c4c2cb64482cdd7f",
+        "name": "Sensor Tekanan",
+        "group": "941891c8d43954f7",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Sensor Tekanan",
+        "label": "psi",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "1000",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 380,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "f75a393a5de695a0",
+        "type": "debug",
+        "z": "c4c2cb64482cdd7f",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "c53b242821968657",
+        "type": "mqtt in",
+        "z": "c4c2cb64482cdd7f",
+        "name": "",
+        "topic": "ssp/temperatur",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "02cfe6d0d7982aee",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 480,
+        "wires": [
+            [
+                "8a62e3f7677af16c",
+                "3127d21cb1c0d793"
+            ]
+        ]
+    },
+    {
+        "id": "8a62e3f7677af16c",
+        "type": "ui_gauge",
+        "z": "c4c2cb64482cdd7f",
+        "name": "Sensor Temperatur",
+        "group": "941891c8d43954f7",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Sensor Temperatur",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": "-200",
+        "max": "850",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 390,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "3127d21cb1c0d793",
+        "type": "debug",
+        "z": "c4c2cb64482cdd7f",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "c30f878b04397154",
+        "type": "inject",
+        "z": "c4c2cb64482cdd7f",
+        "name": "Steam System",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 900,
+        "y": 140,
+        "wires": [
+            [
+                "33e7124bc4d1d537",
+                "dcbf57a52d573804",
+                "f14d6320f4519e82",
+                "76e8cfd2e35f9142"
+            ]
+        ]
+    },
+    {
+        "id": "692f217f57179f3a",
+        "type": "mqtt out",
+        "z": "c4c2cb64482cdd7f",
+        "name": "",
+        "topic": "ssp/ph",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "727660ac399984c1",
+        "x": 1390,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "33e7124bc4d1d537",
+        "type": "random",
+        "z": "c4c2cb64482cdd7f",
+        "name": "Sensor pH",
+        "low": "0",
+        "high": "14",
+        "inte": "true",
+        "property": "payload",
+        "x": 1170,
+        "y": 80,
+        "wires": [
+            [
+                "692f217f57179f3a"
+            ]
+        ]
+    },
+    {
+        "id": "f14d6320f4519e82",
+        "type": "random",
+        "z": "c4c2cb64482cdd7f",
+        "name": "Sensor Oksigen",
+        "low": "0",
+        "high": "100",
+        "inte": "true",
+        "property": "payload",
+        "x": 1180,
+        "y": 140,
+        "wires": [
+            [
+                "f196c8bfb1bcd6a3"
+            ]
+        ]
+    },
+    {
+        "id": "dcbf57a52d573804",
+        "type": "random",
+        "z": "c4c2cb64482cdd7f",
+        "name": "Sensor Aliran Uap",
+        "low": "2",
+        "high": "3000",
+        "inte": "true",
+        "property": "payload",
+        "x": 1190,
+        "y": 200,
+        "wires": [
+            [
+                "95a8eab8ef45f0c3"
+            ]
+        ]
+    },
+    {
+        "id": "f196c8bfb1bcd6a3",
+        "type": "mqtt out",
+        "z": "c4c2cb64482cdd7f",
+        "name": "",
+        "topic": "ssp/oksigen",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "727660ac399984c1",
+        "x": 1410,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "95a8eab8ef45f0c3",
+        "type": "mqtt out",
+        "z": "c4c2cb64482cdd7f",
+        "name": "",
+        "topic": "ssp/aliran",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "727660ac399984c1",
+        "x": 1400,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "5ff48ef4e82e7f35",
+        "type": "mqtt in",
+        "z": "c4c2cb64482cdd7f",
+        "name": "",
+        "topic": "ssp/ph",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "02cfe6d0d7982aee",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 910,
+        "y": 300,
+        "wires": [
+            [
+                "d580b1ede5b8fa73",
+                "5f8ef80b514eda41"
+            ]
+        ]
+    },
+    {
+        "id": "d580b1ede5b8fa73",
+        "type": "ui_gauge",
+        "z": "c4c2cb64482cdd7f",
+        "name": "Sensor pH",
+        "group": "a8d3977f4ff87849",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Sensor pH",
+        "label": "pH",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "14",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1150,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "5f8ef80b514eda41",
+        "type": "debug",
+        "z": "c4c2cb64482cdd7f",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "fbb1be48996ae18a",
+        "type": "mqtt in",
+        "z": "c4c2cb64482cdd7f",
+        "name": "",
+        "topic": "ssp/oksigen",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "02cfe6d0d7982aee",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 930,
+        "y": 400,
+        "wires": [
+            [
+                "0fe55b2163928e89",
+                "69d5d9501279a745"
+            ]
+        ]
+    },
+    {
+        "id": "0fe55b2163928e89",
+        "type": "ui_gauge",
+        "z": "c4c2cb64482cdd7f",
+        "name": "Sensor Oksigen",
+        "group": "a8d3977f4ff87849",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Sensor Oksigen",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1160,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "69d5d9501279a745",
+        "type": "debug",
+        "z": "c4c2cb64482cdd7f",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "d6e2224291285c22",
+        "type": "mqtt in",
+        "z": "c4c2cb64482cdd7f",
+        "name": "",
+        "topic": "ssp/aliran",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "02cfe6d0d7982aee",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 920,
+        "y": 500,
+        "wires": [
+            [
+                "c68f2f1b50f548ad",
+                "b6ba5f7a4d3f8d36"
+            ]
+        ]
+    },
+    {
+        "id": "c68f2f1b50f548ad",
+        "type": "ui_gauge",
+        "z": "c4c2cb64482cdd7f",
+        "name": "Sensor Aliran Uap",
+        "group": "a8d3977f4ff87849",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Sensor Aliran Uap",
+        "label": "kg/jam",
+        "format": "{{value}}",
+        "min": "2",
+        "max": "3000",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1170,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "b6ba5f7a4d3f8d36",
+        "type": "debug",
+        "z": "c4c2cb64482cdd7f",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "d02f596f12fab41f",
+        "type": "inject",
+        "z": "c4c2cb64482cdd7f",
+        "name": "Blast Furnance System",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1710,
+        "y": 140,
+        "wires": [
+            [
+                "4b26ee0632cd7b32",
+                "b5c9a76d1c2514f4",
+                "371a1e1a1a208e73",
+                "308cab9fee0ebd80"
+            ]
+        ]
+    },
+    {
+        "id": "24605e04fb5cce48",
+        "type": "mqtt out",
+        "z": "c4c2cb64482cdd7f",
+        "name": "",
+        "topic": "ssp/gas",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "727660ac399984c1",
+        "x": 2180,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "4b26ee0632cd7b32",
+        "type": "random",
+        "z": "c4c2cb64482cdd7f",
+        "name": "Sensor Gas",
+        "low": "0",
+        "high": "1000",
+        "inte": "true",
+        "property": "payload",
+        "x": 1950,
+        "y": 80,
+        "wires": [
+            [
+                "24605e04fb5cce48"
+            ]
+        ]
+    },
+    {
+        "id": "371a1e1a1a208e73",
+        "type": "random",
+        "z": "c4c2cb64482cdd7f",
+        "name": "Sensor Suara",
+        "low": "10",
+        "high": "140",
+        "inte": "true",
+        "property": "payload",
+        "x": 1960,
+        "y": 140,
+        "wires": [
+            [
+                "6e8e565b07f75195"
+            ]
+        ]
+    },
+    {
+        "id": "b5c9a76d1c2514f4",
+        "type": "random",
+        "z": "c4c2cb64482cdd7f",
+        "name": "Sensor Kelembaban",
+        "low": "0",
+        "high": "100",
+        "inte": "true",
+        "property": "payload",
+        "x": 1980,
+        "y": 200,
+        "wires": [
+            [
+                "e2138d87a724e92f"
+            ]
+        ]
+    },
+    {
+        "id": "6e8e565b07f75195",
+        "type": "mqtt out",
+        "z": "c4c2cb64482cdd7f",
+        "name": "",
+        "topic": "ssp/suara",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "727660ac399984c1",
+        "x": 2180,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "e2138d87a724e92f",
+        "type": "mqtt out",
+        "z": "c4c2cb64482cdd7f",
+        "name": "",
+        "topic": "ssp/kelembaban",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "727660ac399984c1",
+        "x": 2200,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "90ef11eeeb545c42",
+        "type": "mqtt in",
+        "z": "c4c2cb64482cdd7f",
+        "name": "",
+        "topic": "ssp/gas",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "02cfe6d0d7982aee",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 1690,
+        "y": 300,
+        "wires": [
+            [
+                "0254dd6e25e41fc6",
+                "74ae1ed677c4470e"
+            ]
+        ]
+    },
+    {
+        "id": "0254dd6e25e41fc6",
+        "type": "ui_gauge",
+        "z": "c4c2cb64482cdd7f",
+        "name": "Sensor Gas",
+        "group": "604d1c47ae90fb9a",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Sensor Gas",
+        "label": "ppm",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "1000",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1930,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "74ae1ed677c4470e",
+        "type": "debug",
+        "z": "c4c2cb64482cdd7f",
+        "name": "debug 11",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1920,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "97c770efeca3a369",
+        "type": "mqtt in",
+        "z": "c4c2cb64482cdd7f",
+        "name": "",
+        "topic": "ssp/suara",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "02cfe6d0d7982aee",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 1700,
+        "y": 400,
+        "wires": [
+            [
+                "92bc86426e8219d5",
+                "61e0435d366b0541"
+            ]
+        ]
+    },
+    {
+        "id": "92bc86426e8219d5",
+        "type": "ui_gauge",
+        "z": "c4c2cb64482cdd7f",
+        "name": "Sensor Suara",
+        "group": "604d1c47ae90fb9a",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Sensor Suara",
+        "label": "dB",
+        "format": "{{value}}",
+        "min": "10",
+        "max": "140",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1940,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "61e0435d366b0541",
+        "type": "debug",
+        "z": "c4c2cb64482cdd7f",
+        "name": "debug 12",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1920,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "e26193a6a2167cfc",
+        "type": "mqtt in",
+        "z": "c4c2cb64482cdd7f",
+        "name": "",
+        "topic": "ssp/kelembaban",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "02cfe6d0d7982aee",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 1720,
+        "y": 500,
+        "wires": [
+            [
+                "d05365bbe0056b37",
+                "dce78de47439080c"
+            ]
+        ]
+    },
+    {
+        "id": "d05365bbe0056b37",
+        "type": "ui_gauge",
+        "z": "c4c2cb64482cdd7f",
+        "name": "Sensor Kelembaban",
+        "group": "604d1c47ae90fb9a",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Sensor Kelembaban",
+        "label": "%RH",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1960,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "dce78de47439080c",
+        "type": "debug",
+        "z": "c4c2cb64482cdd7f",
+        "name": "debug 13",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1920,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "b3e5fa65bfbeabb1",
+        "type": "ui_text",
+        "z": "c4c2cb64482cdd7f",
+        "group": "941891c8d43954f7",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Aktuator Feedwater",
+        "format": "",
+        "layout": "row-spread",
+        "className": "",
+        "x": 430,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "76e8cfd2e35f9142",
+        "type": "ui_text",
+        "z": "c4c2cb64482cdd7f",
+        "group": "a8d3977f4ff87849",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Aktuator Steam",
+        "format": "",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1180,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "308cab9fee0ebd80",
+        "type": "ui_text",
+        "z": "c4c2cb64482cdd7f",
+        "group": "604d1c47ae90fb9a",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Aktuator Blast Furnance",
+        "format": "",
+        "layout": "col-center",
+        "className": "",
+        "x": 1990,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "bdc2a7378e91f657",
+        "type": "inject",
+        "z": "c4c2cb64482cdd7f",
+        "name": "Smart Steel Plant",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 630,
+        "y": 680,
+        "wires": [
+            [
+                "3bd2eb08111c0b16"
+            ]
+        ]
+    },
+    {
+        "id": "3bd2eb08111c0b16",
+        "type": "ui_text",
+        "z": "c4c2cb64482cdd7f",
+        "group": "a8d3977f4ff87849",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Aktuator Plant",
+        "format": "",
+        "layout": "row-spread",
+        "className": "",
+        "x": 880,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "c4acc07a2a2d75a2",
+        "type": "ui_spacer",
+        "z": "c4c2cb64482cdd7f",
+        "name": "spacer",
+        "group": "941891c8d43954f7",
+        "order": 1,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "2e2c0a710f4d4262",
+        "type": "ui_spacer",
+        "z": "c4c2cb64482cdd7f",
+        "name": "spacer",
+        "group": "a8d3977f4ff87849",
+        "order": 1,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "8f0ae2197759a7cb",
+        "type": "ui_spacer",
+        "z": "c4c2cb64482cdd7f",
+        "name": "spacer",
+        "group": "604d1c47ae90fb9a",
+        "order": 1,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "727660ac399984c1",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "02cfe6d0d7982aee",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "941891c8d43954f7",
+        "type": "ui_group",
+        "name": "Left",
+        "tab": "ef34bd435df27b52",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a8d3977f4ff87849",
+        "type": "ui_group",
+        "name": "Center",
+        "tab": "ef34bd435df27b52",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "604d1c47ae90fb9a",
+        "type": "ui_group",
+        "name": "Right",
+        "tab": "ef34bd435df27b52",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "ef34bd435df27b52",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
