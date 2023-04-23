@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <title>Smart Steel Plant</title>
+    <meta http-equiv="refresh" content="2">
+  </head>
+  <body>
+    <h1>Smart Steel Plant</h1>
+    <h2>Feedwater System</h2>  
+    <!-- {{views}} -->
+    <table border='1'>
+      <tr>
+        <th>Sensor Konduktivitas (µS/cm)</th>
+        <th>Sensor Tekanan (psi)</th>
+        <th>Sensor Temperatur (°C)</th>
+      </tr>
+      <tr>
+        {% for view in views1 %}
+        <td align="center">{{ view.value }}</td>
+        {% endfor %}
+      </tr>
+    </table>
+
+    <h2>Steam System</h2> 
+    <table border='1'>
+      <tr>
+        <th>Sensor pH (pH)</th>
+        <th>Sensor Oksigen (%)</th>
+        <th>Sensor Aliran Uap (kg/jam)</th>
+      </tr>
+      <tr>
+        {% for view in views2 %}
+        <td align="center">{{ view.value }}</td>
+        {% endfor %}
+      </tr>
+    </table>
+    
+    <h2>Blast Furnance System</h2> 
+    <table border='1'>
+      <tr>
+        <th>Sensor Gas (ppm)</th>
+        <th>Sensor Suara (dB)</th>
+        <th>Sensor Kelembaban (%RH)</th>
+      </tr>
+      <tr>
+        {% for view in views3 %}
+        <td align="center">{{ view.value }}</td>
+        {% endfor %}
+      </tr>
+    </table>
+  </body>
+</html>
